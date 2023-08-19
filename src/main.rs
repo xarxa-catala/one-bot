@@ -3,6 +3,16 @@ use teloxide::prelude::*;
 use teloxide::types::{MessageKind, ParseMode};
 
 const OP_GROUP_ID_ENV: &str = "OP_GROUP_ID";
+const WELCOME_MSG_BODY: &str = r#"
+Sigues benvingut/da a la comunitat de One Piece Català. Esperem que t'hi trobis a gust i comparteixis bones estones amb tothom.
+
+⚠️ És important per a nosaltres deixar clars tres punts, abans de començar:
+- <b>No tenim els episodis en català</b> i no els podeu demanar pel grup, <b>busqueu a Google</b>.
+- No repenjarem els episodis malgrat ja no estiguin disponibles; ho farem quan One Piece no estigui en emissió.
+- ❗️ Llegiu-vos les <a href="https://t.me/onepiececatala/1/124586">normes</a>, si us plau ❗️.
+
+Molt bona estada!
+"#;
 
 #[tokio::main]
 async fn main() {
@@ -18,21 +28,17 @@ async fn main() {
     teloxide::repl(bot, move |bot: Bot, msg: Message| async move {
         if let MessageKind::NewChatMembers(chat_member) = msg.kind {
             if msg.chat.id.0 == op_group_id {
-                let name = chat_member.new_chat_members
-                    .first()
-                    .unwrap()
-                    .first_name
-                    .clone();
+                let user = chat_member.new_chat_members
+                    .first();
 
-                let text = format!(r#" Hola, {name},
-- No tenim els episodis en català i no els podeu demanar pel grup, busqueu a Google.
-- No repenjarem els episodis malgrat ja no estiguin disponibles; ho farem quan One Piece no estigui en emissió.
-- Llegiu-vos les <a href="https://t.me/onepiececatala/1/124586">normes</a>.
-"#);
+                if let Some(user) = user {
+                    let name = &user.first_name;
+                    let text = format!("Hola, {name},\n{WELCOME_MSG_BODY}");
 
-                bot.send_message(msg.chat.id, text)
-                    .parse_mode(ParseMode::Html)
-                    .await?;
+                    bot.send_message(msg.chat.id, text)
+                        .parse_mode(ParseMode::Html)
+                        .await?;
+                }
             }
         }
 
