@@ -8,12 +8,12 @@ Sigues benvingut/da a la comunitat de One Piece Català. Esperem que t'hi trobis
 
 ⚠️ És important per a nosaltres deixar clars tres punts, abans de començar:
 - <b>No tenim els episodis en català</b> i no els podeu demanar pel grup, <b>busqueu a Google</b>.
-- L'única font que es permet compartir per veure One Piece en català és el <a href=\"https://www.ccma.cat/tv3/sx3/one-piece/\">SX3</a>.
-- No repenjarem els episodis malgrat ja no estiguin disponibles; ho farem quan One Piece no estigui en emissió.
+- No repenjarem els episodis malgrat ja no estiguin disponibles; ho farem quan One Piece no estigui en emissió <a href="https://www.ccma.cat/tv3/sx3/one-piece/">al canal SX3</a>.
 - ❗️ Llegiu-vos les <a href="https://t.me/onepiececatala/1/124586">normes</a>, si us plau ❗️.
 
 Molt bona estada!
 "#;
+
 
 #[tokio::main]
 async fn main() {
@@ -27,17 +27,22 @@ async fn main() {
 
 
     teloxide::repl(bot, move |bot: Bot, msg: Message| async move {
+        println!("{msg:#?}");
         if let MessageKind::NewChatMembers(chat_member) = msg.kind {
-            if msg.chat.id.0 == op_group_id {
+            if true {//msg.chat.id.0 == op_group_id {
                 let user = chat_member.new_chat_members
                     .first();
+                println!("New chat member!");
 
                 if let Some(user) = user {
                     let name = &user.first_name;
+                    println!("Username is {name}!");
+
                     let id = &user.id.0;
                     let text = format!("Hola, <a href=\"tg://user?id={id}\">{name}</a>,\n{WELCOME_MSG_BODY}");
 
                     bot.send_message(msg.chat.id, text)
+                        .disable_web_page_preview(true)
                         .parse_mode(ParseMode::Html)
                         .await?;
                 }
