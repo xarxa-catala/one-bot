@@ -33,7 +33,8 @@ async fn main() {
 
                 if let Some(user) = user {
                     let name = &user.first_name;
-                    let text = format!("Hola, {name},\n{WELCOME_MSG_BODY}");
+                    let id = &user.id.0;
+                    let text = format!("Hola, <a href=\"tg://user?id={id}\">{name}</a>,\n{WELCOME_MSG_BODY}");
 
                     bot.send_message(msg.chat.id, text)
                         .parse_mode(ParseMode::Html)
