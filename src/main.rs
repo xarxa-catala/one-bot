@@ -25,18 +25,17 @@ async fn main() {
 
     let bot = Bot::from_env();
 
-
     teloxide::repl(bot, move |bot: Bot, msg: Message| async move {
-        println!("{msg:#?}");
+
         if let MessageKind::NewChatMembers(chat_member) = msg.kind {
-            if true {//msg.chat.id.0 == op_group_id {
+            if msg.chat.id.0 == op_group_id {
                 let user = chat_member.new_chat_members
                     .first();
-                println!("New chat member!");
 
                 if let Some(user) = user {
                     let name = &user.first_name;
-                    println!("Username is {name}!");
+
+                    println!("New chat member {name}!");
 
                     let id = &user.id.0;
                     let text = format!("Hola, <a href=\"tg://user?id={id}\">{name}</a>,\n{WELCOME_MSG_BODY}");
