@@ -9,7 +9,7 @@ Sigues benvingut/da a la comunitat de One Piece Català. Esperem que t'hi trobis
 ⚠️ És important per a nosaltres deixar clars tres punts, abans de començar:
 - <b>No tenim els episodis en català</b> i no els podeu demanar pel grup, <b>busqueu a Google</b>.
 - No repenjarem els episodis malgrat ja no estiguin disponibles; ho farem quan One Piece no estigui en emissió <a href="https://www.ccma.cat/tv3/sx3/one-piece/">al canal SX3</a>.
-- ❗️ Llegiu-vos les <a href="https://t.me/onepiececatala/1/124586">normes</a>, si us plau ❗️.
+- ❗️ Llegiu-vos les <a href="https://t.me/onepiececatala/1/124586">normes</a>, si us plau. ❗️
 
 Molt bona estada!
 "#;
