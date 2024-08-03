@@ -4,12 +4,7 @@ use teloxide::types::{MessageKind, ParseMode};
 
 const OP_GROUP_ID_ENV: &str = "OP_GROUP_ID";
 const WELCOME_MSG_BODY: &str = r#"
-Sigues benvingut/da a la comunitat de One Piece Català. Esperem que t'hi trobis a gust i comparteixis bones estones amb tothom.
-
-⚠️ És important per a nosaltres deixar clars tres punts, abans de començar:
-- <b>No tenim els episodis en català</b> i no els podeu demanar pel grup, <b>busqueu a Google</b>.
-- No repenjarem els episodis malgrat ja no estiguin disponibles; ho farem quan One Piece no estigui en emissió <a href="https://www.ccma.cat/tv3/sx3/one-piece/">al canal SX3</a>.
-- ❗️ Llegiu-vos les <a href="https://t.me/onepiececatala/1/124586">normes</a>, si us plau. ❗️
+Et donem la benvinguda a la comunitat de One Piece Català. Esperem que t'hi trobis a gust i comparteixis bones estones amb tothom. Llegeix les normes, si us plau i passa-t’ho molt bé amb nosaltres!
 
 Molt bona estada!
 "#;
