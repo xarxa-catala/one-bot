@@ -12,6 +12,7 @@ Molt bona estada!
 
 #[tokio::main]
 async fn main() {
+    println!("Starting One BOT!");
     dotenv().expect(".env file not found");
     let op_group_id: i64 = std::env::var(OP_GROUP_ID_ENV)
         .expect("OP group ID is not set in the environment variables")
@@ -21,7 +22,6 @@ async fn main() {
     let bot = Bot::from_env();
 
     teloxide::repl(bot, move |bot: Bot, msg: Message| async move {
-
         if let MessageKind::NewChatMembers(chat_member) = msg.kind {
             if msg.chat.id.0 == op_group_id {
                 let user = chat_member.new_chat_members
